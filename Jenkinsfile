@@ -1,7 +1,7 @@
 pipeline {
     agent any
       triggers {
-        cron('*/2 * * * *')
+        cron('H */1 * * *')
       }
           tools { 
             maven 'M2_HOME'
