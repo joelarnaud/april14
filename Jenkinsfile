@@ -24,7 +24,7 @@ pipeline {
                stage('deploy'){
                 steps {
                   echo "test deploy"
-                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker-host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker rmi -f april14:v.${BUILD_NUMBER}; docker build -t april14:v.${BUILD_NUMBER} .; docker tag april14:v.${BUILD_NUMBER} joelarnaud/april14:v.${BUILD_NUMBER}; docker push joelarnaud/april14:v.${BUILD_NUMBER}; docker run -dit -p 8000:8080 joelarnaud/april14:v.${BUILD_NUMBER}', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: '**/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker-host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker rmi -f april14:v.${BUILD_NUMBER}; docker build -t april14:v.${BUILD_NUMBER} .; docker tag april14:v.${BUILD_NUMBER} joelarnaud/april14:v.${BUILD_NUMBER}; docker push joelarnaud/april14:v.${BUILD_NUMBER}; docker run -dit -p 8008:8080 joelarnaud/april14:v.${BUILD_NUMBER}', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: '**/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                   
      }
     }
